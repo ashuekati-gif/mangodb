@@ -1,0 +1,42 @@
+// Select or create the database
+use library
+
+// Create: Insert three books
+db.books.insertMany([
+  {
+    title: "1984",
+    author: "George Orwell",
+    year: 1949,
+    genre: "Dystopian"
+  },
+  {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+    genre: "Classic"
+  },
+  {
+    title: "Moby Dick",
+    author: "Herman Melville",
+    year: 1851,
+    genre: "Adventure"
+  }
+])
+
+// Read: Display all books
+db.books.find()
+
+// Find books by a specific author
+db.books.find({ author: "George Orwell" })
+
+// Update: Change the year of 1984
+db.books.updateOne(
+  { title: "1984" },
+  { $set: { year: 1950 } }
+)
+
+// Delete: Remove a book by title
+db.books.deleteOne({ title: "The Great Gatsby" })
+
+// Display the remaining books
+db.books.find()
